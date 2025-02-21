@@ -1,0 +1,90 @@
+# .NET Core / ASP.NET Core
+## Build output
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+*.DotSettings.user
+*.csproj.user
+
+## Published files
+wwwroot/_publish/
+*.pubxml
+*.publishproj
+
+## NuGet Packages
+*.nupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Visual Studio
+.vs/
+.vscode/
+*.sln.docstates
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Rider (JetBrains)
+.idea/
+*.sln.iml
+
+## Test results
+TestResults/
+*.trx
+*.xml
+
+## User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Miscellaneous
+*.swp
+*~
+*.lock
+project.lock.json
+Thumbs.db
+.DS_Store
+
+## Sensitive data
+appsettings.json
+appsettings.*.json
+secrets.json
+*.key
+*.pem
+*.crt
+*.cer
+
+## Dependency folders
+node_modules/  # In case npm is used for tooling
