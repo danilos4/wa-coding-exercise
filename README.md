@@ -4,6 +4,25 @@
 
 This project is a proof-of-concept (POC) lead management system for Walker Advertising, designed to demonstrate a subset of my technical skills. It connects attorneys with consumers needing legal services through a REST API built with ASP.NET Core (C#) and a dashboard UI developed with Angular. Key skills showcased include backend API development, frontend UI design, unit testing, and containerization with Docker.
 
+
+## Table of Contents
+- [Functional Specification](#functional-specification)
+  - [Overview](#overview)
+  - [API Details](#api-details)
+    - [How to Use and Test the API](#how-to-use-and-test-the-api)
+    - [Docker Deployment](#docker-deployment)
+- [User Guide for the UI Dashboard](#user-guide-for-the-ui-dashboard)
+  - [Overview](#overview-1)
+  - [Local Setup](#local-setup)
+  - [Features](#features)
+  - [How to Use the Dashboard](#how-to-use-the-dashboard)
+- [Project Structure](#project-structure)
+- [Skills Showcased](#skills-showcased)
+- [Prerequisites](#prerequisites)
+- [Running the Project](#running-the-project)
+  - [Local Development](#local-development)
+  - [Docker Compose](#docker-compose)
+
 ## Functional Specification
 
 ### Overview
