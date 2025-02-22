@@ -4,17 +4,19 @@ namespace WalkerAdvertisingApi.Models;
 
 public class LeadRequest
 {
-        [Required]
-        public string Name { get; set; }
+    [Required]
+    public string Name { get; set; }
 
-        [Required]
-        public string PhoneNumber { get; set; }
+    [Required]
+    [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be a 10-digit numeric value.")]
+    public string PhoneNumber { get; set; }
 
-        [Required]
-        public string ZipCode { get; set; }
+    [Required]
+    [RegularExpression(@"^\d{5}$", ErrorMessage = "Zip code must be a 5-digit numeric value.")]
+    public string ZipCode { get; set; }
 
-        [Required]
-        public bool HasCommunicationPermission { get; set; }
+    public bool HasCommunicationPermission { get; set; }
 
-        public string? Email { get; set; }
+    [OptionalEmailAddress]
+    public string? Email { get; set; }
 }
