@@ -1,0 +1,23 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  walkeradvertisingapi:
+    image: walkeradvertisingapi
+    build:
+      context: .
+      dockerfile: WalkerAdvertisingApi/WalkerAdvertisingApi/Dockerfile
+    ports:
+      - 5270:5270
+
+
+  walkeradvertisingweb:
+    image: walker-advertising-frontend
+    build:
+      context: .
+      dockerfile: walker-advertising-frontend/Dockerfile
+    ports:
+      - 80:80
+    depends_on: 
+      - walkeradvertisingapi

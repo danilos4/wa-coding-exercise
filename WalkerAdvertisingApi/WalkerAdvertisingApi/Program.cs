@@ -20,7 +20,7 @@ public class Program
         {
             options.AddPolicy("AllowFrontend", policy =>
             {
-                policy.WithOrigins("http://localhost:4200") // Match frontend origin
+                policy.WithOrigins("http://localhost:4200", "http://localhost") // Match frontend origin
                     .AllowAnyMethod() // Allow GET, POST, etc.
                     .AllowAnyHeader(); // Allow Content-Type, etc.
             });

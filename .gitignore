@@ -400,3 +400,5 @@ FodyWeavers.xsd
 *.sln.iml
 .vscode/
 .DS_Store
+.angular/
+dist/
