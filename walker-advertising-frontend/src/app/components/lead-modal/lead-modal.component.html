@@ -1,0 +1,157 @@
+<div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0">
+      <div class="modal-header bg-dark-blue text-white">
+        <h5 class="modal-title" id="leadModalLabel">
+          {{ mode === 'details' ? 'Lead Details' : mode === 'send' ? 'Send Message to ' + lead?.name : 'Add New Lead' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4 bg-light-gray" *ngIf="mode !== 'add' || !lead">
+        <!-- Details Mode -->
+        <div *ngIf="mode === 'details' && lead" class="details-container">
+          <div class="detail-item"><strong>Name:</strong> {{ lead.name }}</div>
+          <div class="detail-item"><strong>Phone:</strong> {{ lead.phoneNumber }}</div>
+          <div class="detail-item"><strong>Zip Code:</strong> {{ lead.zipCode }}</div>
+          <div class="detail-item"><strong>Email:</strong> {{ lead.email || 'Not provided' }}</div>
+          <div class="detail-item">
+            <strong>Comm. Permission:</strong>
+            <span [ngStyle]="{'color': lead.hasCommunicationPermission ? '#28A745' : '#DC3545'}">
+              {{ lead.hasCommunicationPermission ? '✔' : '✘' }}
+            </span>
+          </div>
+          <div class="detail-item"><strong>Created:</strong> {{ lead.createdAt | date }}</div>
+        </div>
+
+        <!-- Send Message Mode -->
+        <div *ngIf="mode === 'send' && lead" class="form-container">
+          <div class="mb-3">
+            <label for="messageType" class="form-label">Message Type</label>
+            <select id="messageType" class="form-select custom-select" [(ngModel)]="messageType">
+              <option value="text">Text</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">To:</label>
+            <input
+              type="text"
+              class="form-control custom-input"
+              [value]="messageType === 'text' ? lead.phoneNumber : lead.email || 'Not provided'"
+              readonly
+            />
+          </div>
+          <div class="mb-3">
+            <label for="messageContent" class="form-label">Message (max 200 characters)</label>
+            <textarea
+              id="messageContent"
+              class="form-control custom-textarea"
+              [(ngModel)]="messageContent"
+              maxlength="200"
+              rows="3"
+                 placeholder="Type your message here..."
+            ></textarea>
+            <small class="form-text text-muted">{{ messageContent.length }}/200 characters</small>
+          </div>
+        </div>
+
+        <!-- Add Lead Mode -->
+        <div *ngIf="mode === 'add'" class="form-container">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name *</label>
+            <input
+              id="name"
+              class="form-control custom-input"
+              [(ngModel)]="newLead.name"
+              placeholder="Enter name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number *</label>
+            <input
+              id="phoneNumber"
+              class="form-control custom-input"
+              [(ngModel)]="newLead.phoneNumber"
+              placeholder="Enter 10-digit phone number"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="10"
+              (keypress)="restrictToNumbers($event)"
+              [class.is-invalid]="newLead.phoneNumber && !isValidPhoneNumber(newLead.phoneNumber)"
+              required
+            />
+            <div *ngIf="newLead.phoneNumber && !isValidPhoneNumber(newLead.phoneNumber)" class="invalid-feedback">
+              Phone Number must be exactly 10 numeric digits.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="zipCode" class="form-label">Zip Code *</label>
+            <input
+              type="text"
+              id="zipCode"
+              class="form-control custom-input"
+              [(ngModel)]="newLead.zipCode"
+              placeholder="Enter 5-digit zip code"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="5"
+              (keypress)="restrictToNumbers($event)"
+              [class.is-invalid]="newLead.zipCode && !isValidZipCode(newLead.zipCode)"
+              required
+            />
+            <div *ngIf="newLead.zipCode && !isValidZipCode(newLead.zipCode)" class="invalid-feedback">
+              Zip Code must be exactly 5 numeric digits.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              class="form-control custom-input"
+              [(ngModel)]="newLead.email"
+              placeholder="Enter email (e.g., user@example.com)"
+              type="email"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              [class.is-invalid]="newLead.email && !isValidEmail(newLead.email)"
+            />
+            <div *ngIf="newLead.email && !isValidEmail(newLead.email)" class="invalid-feedback">
+              Please enter a valid email address (e.g., user&#64;example.com).
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="hasCommunicationPermission" class="form-label">Communication Permission</label>
+            <input
+              id="hasCommunicationPermission"
+              type="checkbox"
+              [(ngModel)]="newLead.hasCommunicationPermission"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-light-gray">
+        <button type="button" class="btn btn-outline-dark-blue custom-btn" (click)="closeModal()">
+          {{ mode === 'details' ? 'Close' : mode === 'send' ? 'Cancel' : 'Cancel' }}
+        </button>
+        <button
+          *ngIf="mode === 'send'"
+          type="button"
+          class="btn btn-gold custom-btn"
+          (click)="onSend()"
+          [disabled]="!messageContent"
+        >
+          Send Message
+        </button>
+        <button
+          *ngIf="mode === 'add'"
+          type="button"
+          class="btn btn-gold custom-btn"
+          (click)="onAddLead()"
+          [disabled]="!newLead.name || !newLead.phoneNumber || !isValidPhoneNumber(newLead.phoneNumber) || !newLead.zipCode || !isValidZipCode(newLead.zipCode) || (newLead.email && !isValidEmail(newLead.email))"
+        >
+          Add Lead
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

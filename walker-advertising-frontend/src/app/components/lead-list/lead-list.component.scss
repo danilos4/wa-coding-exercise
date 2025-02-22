@@ -1,0 +1,107 @@
+@import '../../../styles.scss';
+
+/* Card Styling */
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: $white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bg-dark-blue {
+  background-color: $dark-blue;
+}
+
+.bg-light-gray {
+  background-color: $light-gray;
+}
+
+/* Table Styling */
+.custom-table {
+  background-color: $white;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.thead-dark th {
+  background-color: $dark-blue;
+  color: $white;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+.custom-table td {
+  vertical-align: middle;
+  padding: 1rem;
+}
+
+.custom-table tr:hover {
+  background-color: lighten($light-gray, 2%);
+  transition: background-color 0.2s ease;
+}
+
+.permission-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+/* Buttons */
+.custom-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-outline-dark-blue {
+  border: 2px solid $dark-blue;
+  color: $dark-blue;
+}
+
+.btn-outline-dark-blue:hover:not(:disabled) {
+  background-color: $dark-blue;
+  color: $white;
+}
+
+.btn-gold {
+  background-color: $gold;
+  border-color: $gold;
+  color: $white; 
+}
+
+.btn-gold:hover:not(:disabled) {
+  background-color: darken($gold, 10%);
+  border-color: darken($gold, 10%);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Pagination */
+.custom-pagination .page-link {
+  color: $dark-blue;
+  border-radius: 5px;
+  margin: 0 5px;
+  padding: 0.5rem 1rem;
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: $gold;
+  border-color: $gold;
+  color: $dark-blue;
+}
+
+.custom-pagination .page-link:hover:not(.active) {
+  background-color: $light-gray;
+  color: darken($dark-blue, 10%);
+}
+
+.custom-pagination .page-item.disabled .page-link {
+  color: #6c757d;
+}
