@@ -67,20 +67,6 @@ This project is a proof-of-concept (POC) lead management system for Walker Adver
    - Run `dotnet test` in `/walkeradvertisingapi/WalkerAdvertisingApi.Tests` to execute them.
    - Run 'dotnet test WalkerAdvertisingApi.Tests/WalkerAdvertisingApi.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=../coverage/' to generate a test report. 
 
-+----------------------+--------+--------+--------+
-| Module               | Line   | Branch | Method |
-+----------------------+--------+--------+--------+
-| WalkerAdvertisingApi | 73.65% | 65.62% | 92.59% |
-+----------------------+--------+--------+--------+
-
-+---------+--------+--------+--------+
-|         | Line   | Branch | Method |
-+---------+--------+--------+--------+
-| Total   | 73.65% | 65.62% | 92.59% |
-+---------+--------+--------+--------+
-| Average | 73.65% | 65.62% | 92.59% |
-+---------+--------+--------+--------+
-
 #### Docker Deployment
 1. **Prerequisites**: Docker and Docker Compose installed.
 2. **Run Docker Compose**:
