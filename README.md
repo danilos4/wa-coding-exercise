@@ -6,7 +6,7 @@ This project is a proof-of-concept (POC) lead management system for Walker Adver
 
 ## Skills Showcased
 - **Backend Development**: Built a RESTful API with ASP.NET Core 8, including Swagger for documentation.
-- **Frontend Development**: Created a responsive Angular 19 dashboard with form validation and modals.
+- **Frontend Development**: Created a responsive Angular 19 dashboard with form validation, modals, and toast notifications, styled with colors inspired by the Walker Advertising website to reflect brand consistency.
 - **Unit Testing**: 
   - Wrote 29 unit tests for the backend using xUnit and FluentAssertions, with coverage reporting.
   - Developed 29 unit tests for the frontend using Jasmine and Karma, ensuring robust component testing.
