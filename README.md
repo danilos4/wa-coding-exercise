@@ -4,6 +4,13 @@
 
 This project is a proof-of-concept (POC) lead management system for Walker Advertising, designed to demonstrate a subset of my technical skills. It connects attorneys with consumers needing legal services through a REST API built with ASP.NET Core (C#) and a dashboard UI developed with Angular. Key skills showcased include backend API development, frontend UI design, unit testing, and containerization with Docker.
 
+## Skills Showcased
+- **Backend Development**: Built a RESTful API with ASP.NET Core 8, including Swagger for documentation.
+- **Frontend Development**: Created a responsive Angular 19 dashboard with form validation and modals.
+- **Unit Testing**: 
+  - Wrote 29 unit tests for the backend using xUnit and FluentAssertions, with coverage reporting.
+  - Developed 29 unit tests for the frontend using Jasmine and Karma, ensuring robust component testing.
+- **Containerization**: Implemented Docker support with multi-service orchestration via Docker Compose.
 
 ## Table of Contents
 - [Functional Specification](#functional-specification)
@@ -17,7 +24,6 @@ This project is a proof-of-concept (POC) lead management system for Walker Adver
   - [Features](#features)
   - [How to Use the Dashboard](#how-to-use-the-dashboard)
 - [Project Structure](#project-structure)
-- [Skills Showcased](#skills-showcased)
 - [Prerequisites](#prerequisites)
 - [Running the Project](#running-the-project)
   - [Local Development](#local-development)
@@ -56,9 +62,24 @@ This project is a proof-of-concept (POC) lead management system for Walker Adver
      - Fetch leads with `GET /api/leads`.
      - Test notifications with `POST /api/leads/{id}/notifications`.
 
-4. **Unit Tests**:
+4. **Back-End Unit Tests & Coverage**:
    - The `/walkeradvertisingapi` folder includes a test project with 29 unit tests, showcasing my ability to write robust tests using xUnit and FluentAssertions.
    - Run `dotnet test` in `/walkeradvertisingapi/WalkerAdvertisingApi.Tests` to execute them.
+   - Run 'dotnet test WalkerAdvertisingApi.Tests/WalkerAdvertisingApi.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=../coverage/' to generate a test report. 
+
++----------------------+--------+--------+--------+
+| Module               | Line   | Branch | Method |
++----------------------+--------+--------+--------+
+| WalkerAdvertisingApi | 73.65% | 65.62% | 92.59% |
++----------------------+--------+--------+--------+
+
++---------+--------+--------+--------+
+|         | Line   | Branch | Method |
++---------+--------+--------+--------+
+| Total   | 73.65% | 65.62% | 92.59% |
++---------+--------+--------+--------+
+| Average | 73.65% | 65.62% | 92.59% |
++---------+--------+--------+--------+
 
 #### Docker Deployment
 1. **Prerequisites**: Docker and Docker Compose installed.
@@ -79,7 +100,7 @@ This project is a proof-of-concept (POC) lead management system for Walker Adver
 ## User Guide for the UI Dashboard
 
 ### Overview
-The Angular dashboard displays leads from the API and supports viewing details and adding new leads, highlighting my frontend development skills with Angular 19.
+The Angular dashboard displays leads from the API and supports viewing details and adding new leads, highlighting my frontend development skills with Angular.
 
 ### Local Setup
 1. Navigate to `/walker-advertising-frontend`.
@@ -161,16 +182,11 @@ The Angular dashboard displays leads from the API and supports viewing details a
   - `src/app/models/lead.ts`: Lead interface
 - **docker-compose.yml**: Docker Compose configuration
 
-## Skills Showcased
-- **Backend Development**: Built a RESTful API with ASP.NET Core, including Swagger for documentation.
-- **Frontend Development**: Created a responsive Angular 19 dashboard with form validation and modals.
-- **Unit Testing**: Wrote 17 unit tests using xUnit and FluentAssertions to ensure API reliability.
-- **Containerization**: Implemented Docker support with multi-service orchestration via Docker Compose.
-
 ## Prerequisites
-- **Backend**: .NET SDK 8.0, Visual Studio/Code
-- **Frontend**: Node.js 20, Angular CLI 19
+- **Backend**: .NET Core 8, Visual Studio/Code
+- **Frontend**: Node 20, Angular CLI 19
 - **Docker**: Docker Desktop or Docker CLI with Compose
+- **Test Coverage**: `coverlet.msbuild` (for .NET tests)
 
 ## Running the Project
 

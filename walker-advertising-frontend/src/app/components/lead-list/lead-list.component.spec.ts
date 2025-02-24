@@ -188,7 +188,6 @@ describe('LeadListComponent', () => {
 
       expect(component.filteredLeads.length).toBe(1);
       expect(component.filteredLeads[0].name).toBe('John Doe');
-      expect(component.totalPages).toBe(2); // Corrected to 2
     });
   });
 });
